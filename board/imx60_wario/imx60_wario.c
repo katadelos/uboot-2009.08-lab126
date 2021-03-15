@@ -2000,7 +2000,7 @@ int checkboard(void)
 	return 0;
 }
 
-inline int check_post_mode(void)
+extern inline int check_post_mode(void)
 {
 	char post_mode[BOARD_POSTMODE_LEN + 1];
 #ifdef CONFIG_QBOOT
