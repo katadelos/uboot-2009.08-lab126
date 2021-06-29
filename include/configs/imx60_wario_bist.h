@@ -37,7 +37,7 @@
 
 #define CONFIG_SKIP_RELOCATE_UBOOT
 
-#define CONFIG_LAB126_LPM_TEST		1
+//#define CONFIG_LAB126_LPM_TEST		1
 
 #define CONFIG_ARCH_CPU_INIT
 #undef CONFIG_ARCH_MMU /* disable MMU first */
