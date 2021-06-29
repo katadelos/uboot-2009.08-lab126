@@ -3237,7 +3237,9 @@ imx50_yoshime3_mfgtool_config	\
 imx50_yoshime3_bist_config :    unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm_cortexa8 imx50_yoshi NULL mx50
 
-imx60_wario_config		\
+imx60_wario_config			\
+imx60_wario_fastboot_config \
+imx60_wario_diags_config	\
 imx60_wario_mfgtool_config	\
 imx60_wario_bist_config		\
 imx60_duet_config			\
@@ -3758,8 +3760,8 @@ clean:
 		| xargs rm -f
 
 clobber:	clean
-	@find $(OBJTREE) -type f \( -name .depend \
-		-o -name '*.srec' -o -name '*.bin' -o -name u-boot.img \) \
+	@find $(OBJTREE) -path $(OBJTREE)/bin -prune -o -type f \( -name .depend \
+		-name '*.srec' -o -name '*.bin' -o -name u-boot.img \) \
 		-print0 \
 		| xargs -0 rm -f
 	@rm -f $(OBJS) $(obj)*.bak $(obj)ctags $(obj)etags $(obj)TAGS \
