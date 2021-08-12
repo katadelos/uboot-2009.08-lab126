@@ -3241,6 +3241,7 @@ imx60_wario_config			\
 imx60_wario_fastboot_config \
 imx60_wario_diags_config	\
 imx60_wario_mfgtool_config	\
+imx60_wario_mfgtool_kboot_config	\
 imx60_wario_bist_config		\
 imx60_duet_config			\
 imx60_duet_mfgtool_config	\
