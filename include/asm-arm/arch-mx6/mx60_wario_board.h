@@ -434,6 +434,13 @@ static const struct nvram_t nvram_info[] = {
 	.size = BOARD_QBCOUNT_LEN,
     },
 #endif
+#ifdef CONFIG_CRPMODE
+	{
+	.name = "crpmode",
+	.offset = 0x1070,
+	.size = BOARD_BOOTMODE_LEN,
+    },
+#endif
 };
 
 #define CONFIG_NUM_NV_VARS (sizeof(nvram_info)/sizeof(nvram_info[0]))

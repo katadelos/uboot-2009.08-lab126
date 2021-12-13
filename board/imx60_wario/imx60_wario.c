@@ -1726,6 +1726,9 @@ static inline int check_boot_mode(void)
 {
 	extern int g_fl_override;
 	char boot_mode[BOARD_BOOTMODE_LEN + 1];
+#ifdef CONFIG_CRPMODE
+	char crp_mode[BOARD_BOOTMODE_LEN + 1];
+#endif
 #define NEW_BOOTCMD_LENGTH 21
 	char boot_cmd[NEW_BOOTCMD_LENGTH];
 #ifdef CONFIG_QBOOT
@@ -1814,6 +1817,22 @@ static inline int check_boot_mode(void)
 	} else if (!strncmp(boot_mode, "reset", 7)) {
 		printf ("BOOTMODE OVERRIDE: RESET\n");
 		strcpy(boot_cmd, "bist reset");
+#if defined(CONFIG_CRPMODE)
+	} else if (pmic_charging()) {
+		if (idme_get_var("crpmode", crp_mode, sizeof(crp_mode))) {
+			idme_update_var("crpmode", "fastboot");
+		}
+		if (!strncmp(crp_mode, "diags", 5)) {
+			printf ("BOOTMODE OVERRIDE: CRP DIAGS\n");
+			setenv("bootcmd", "run bootcmd_diags");
+			return 0;
+		} else if (!strncmp(crp_mode, "fastboot", 8)) {
+			printf ("BOOTMODE OVERRIDE: CRP FASTBOOT\n");
+			setenv("bootcmd", "run bootcmd_fastboot");
+			return 0;
+		}
+		strcpy(boot_cmd, "run bootcmd_fastboot");
+#endif //CONFIG_CRPMODE
 	} else if (!strncmp(boot_mode, "main", 4) || !strncmp(boot_mode, "ota", 3)) {
 		/* clear bootargs to let the kernel choose them */
 		setenv("bootargs", "\0");
