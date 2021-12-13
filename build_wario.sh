@@ -27,9 +27,9 @@ main() {
   build_variant imx60_wario_config prod
   mv u-boot.bin bin/wario/uboot_2009-08-lab126_wario_stock_prod.bin
   build_variant imx60_wario_mfgtool_kboot_config mfgtool
-  mv u-boot.bin bin/wario/uboot_2009-08-lab126_wario_stock_mgftool_kboot.bin
+  mv u-boot.bin bin/wario/uboot_2009-08-lab126_wario_stock_mfgtool_kboot.bin
   build_variant imx60_wario_mfgtool_config mfgtool
-  mv u-boot.bin bin/wario/uboot_2009-08-lab126_wario_stock_mgftool.bin
+  mv u-boot.bin bin/wario/uboot_2009-08-lab126_wario_stock_mfgtool.bin
   build_variant imx60_wario_fastboot_config prod
   mv u-boot.bin bin/wario/uboot-2009_08_lab126-wario_usb_fastboot.bin
   build_variant imx60_wario_diags_config prod
